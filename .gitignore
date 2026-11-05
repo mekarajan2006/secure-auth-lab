@@ -1,0 +1,22 @@
+# Node dependencies
+node_modules/
+package-lock.json
+
+# Environment variables
+.env
+.env.local
+
+# SQLite database files
+*.db
+*.db-journal
+*.db-wal
+
+# Application and audit logs
+logs/
+*.log
+
+# Operating system and editor artifacts
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
