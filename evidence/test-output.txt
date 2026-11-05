@@ -1,0 +1,102 @@
+﻿
+> secure-auth-lab@1.0.0 test
+> node --test test/*.test.js
+
+TAP version 13
+# Subtest: NoteShare Secure Authentication Service Tests
+    # Subtest: 1. Passwords are stored hashed (never plaintext, starts with $2b$12$ or $2a$12$)
+    ok 1 - 1. Passwords are stored hashed (never plaintext, starts with $2b$12$ or $2a$12$)
+      ---
+      duration_ms: 495.85
+      ...
+    # Subtest: 2. Weak, short, common, and non-string passwords are rejected with 400
+    ok 2 - 2. Weak, short, common, and non-string passwords are rejected with 400
+      ---
+      duration_ms: 90.1465
+      ...
+    # Subtest: 3. Invalid emails are rejected with 400
+    ok 3 - 3. Invalid emails are rejected with 400
+      ---
+      duration_ms: 110.1092
+      ...
+    # Subtest: 4. Duplicate registration does not reveal whether the email exists beyond a generic response
+    ok 4 - 4. Duplicate registration does not reveal whether the email exists beyond a generic response
+      ---
+      duration_ms: 414.6823
+      ...
+    # Subtest: 5. Login success sets a cookie with HttpOnly, SameSite, and custom sid name
+    ok 5 - 5. Login success sets a cookie with HttpOnly, SameSite, and custom sid name
+      ---
+      duration_ms: 808.6819
+      ...
+    # Subtest: 6. Wrong password and unknown email give identical status (401) and identical body
+    ok 6 - 6. Wrong password and unknown email give identical status (401) and identical body
+      ---
+      duration_ms: 1202.5709
+      ...
+    # Subtest: 7. The 6th rapid failed login returns 429 with Retry-After header
+    ok 7 - 7. The 6th rapid failed login returns 429 with Retry-After header
+      ---
+      duration_ms: 2019.8832
+      ...
+    # Subtest: 8. Session ID changes after login (session fixation prevention)
+    ok 8 - 8. Session ID changes after login (session fixation prevention)
+      ---
+      duration_ms: 827.3054
+      ...
+    # Subtest: 9. /me returns 401 without a session and 200 with one
+    ok 9 - 9. /me returns 401 without a session and 200 with one
+      ---
+      duration_ms: 841.0261
+      ...
+    # Subtest: 10. Logout invalidates the session (a reused old cookie returns 401)
+    ok 10 - 10. Logout invalidates the session (a reused old cookie returns 401)
+      ---
+      duration_ms: 854.4721
+      ...
+    # Subtest: 11. Session expires after idle timeout (short configurable timeout)
+    ok 11 - 11. Session expires after idle timeout (short configurable timeout)
+      ---
+      duration_ms: 1044.101
+      ...
+    # Subtest: 12. SQL injection string in email does not log in and does not crash
+    ok 12 - 12. SQL injection string in email does not log in and does not crash
+      ---
+      duration_ms: 1620.9997
+      ...
+# [Internal Error Logged]: Simulated database or server failure
+    # Subtest: 13. Error responses contain no stack trace and disclose no internal paths
+    ok 13 - 13. Error responses contain no stack trace and disclose no internal paths
+      ---
+      duration_ms: 15.3301
+      ...
+    # Subtest: 14. Response headers include helmet defaults and no X-Powered-By header
+    ok 14 - 14. Response headers include helmet defaults and no X-Powered-By header
+      ---
+      duration_ms: 17.2325
+      ...
+    # Subtest: 15. CSRF defense: POST endpoints require custom X-Requested-With header
+    ok 15 - 15. CSRF defense: POST endpoints require custom X-Requested-With header
+      ---
+      duration_ms: 54.6059
+      ...
+    # Subtest: 16. Audit log records events with timestamps, truncated hashes, and no plaintext secrets
+    ok 16 - 16. Audit log records events with timestamps, truncated hashes, and no plaintext secrets
+      ---
+      duration_ms: 1.8849
+      ...
+    1..16
+ok 1 - NoteShare Secure Authentication Service Tests
+  ---
+  duration_ms: 10469.6468
+  type: 'suite'
+  ...
+1..1
+# tests 16
+# suites 1
+# pass 16
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 11762.794
